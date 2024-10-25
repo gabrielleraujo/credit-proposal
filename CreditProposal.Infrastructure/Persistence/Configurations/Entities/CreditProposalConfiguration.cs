@@ -26,11 +26,5 @@ public class CreditProposalConfiguration : IEntityTypeConfiguration<CreditPropos
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasIndex("CustomerId");
-
-        // builder.Property(x => x.CreditOfferName)
-        //     .HasColumnName("CreditOfferName");
-        
-        // builder.Property(x => x.Description)
-        //     .HasColumnName("Description");
     }
 }

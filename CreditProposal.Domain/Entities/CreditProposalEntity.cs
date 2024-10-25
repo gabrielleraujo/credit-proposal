@@ -14,12 +14,10 @@ public class CreditProposalEntity : BaseEntity
         CustomerId = customer.Id;
     }
 
-    public Guid CustomerId { get; private set; } // Propriedade que representa a chave estrangeira, mas não é pública
+    public Guid CustomerId { get; private set; }
     public CustomerEntity Customer { get; private set; }
-    public bool IsCreditReleased { get; set; }
-    public decimal CreditLimitReleased { get; set; }
-    //public string CreditOfferName { get; private set; } = string.Empty;
-    //public string Description { get; private set; } = string.Empty;
+    public bool IsCreditReleased { get; private set; }
+    public decimal CreditLimitReleased { get; private set; }
 
     protected override void ApplyValidation()
     {
@@ -35,22 +33,4 @@ public class CreditProposalEntity : BaseEntity
             CreditLimitReleased = 5000m;
         }
     }
-
-    // protected override void ChooseCreditCard()
-    // {
-    //     if (CreditLimitReleased <= 5000m)
-    //     {
-    //         IsActive = true;
-    //         CreditOfferName = "Standard";
-    //         Flag = "Visa";
-    //         Description = "Cartão de crédito inicial.";
-    //     }
-    //     if (CreditLimitReleased > 5000m)
-    //     {
-    //         IsActive = true;
-    //         CreditOfferName = "Platinum";
-    //         Flag = "Visa";
-    //         Description = "Cartão de crédito intermediário.";
-    //     }
-    // }
 }

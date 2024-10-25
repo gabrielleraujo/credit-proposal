@@ -11,7 +11,7 @@
         "pipeArgs": [
           "exec",
           "-i",
-          "credit-card-api-container-debug",  // Nome do serviço no docker-compose
+          "credit-proposal-api-container-debug",  // Nome do serviço no docker-compose
           "sh",
           "-c"
         ],
@@ -47,7 +47,7 @@
       // Posso comentar esse bloco abaixo se der erro, eu adicionei ele depois.
       "pipeTransport": {
         "pipeProgram": "docker",
-        "pipeArgs": [ "exec", "-i", "credit-card-api-container-debug" ],
+        "pipeArgs": [ "exec", "-i", "credit-proposal-api-container-debug" ],
         "debuggerPath": "/vsdbg/vsdbg",
         "pipeCwd": "${workspaceFolder}",
         "quoteArgs": false

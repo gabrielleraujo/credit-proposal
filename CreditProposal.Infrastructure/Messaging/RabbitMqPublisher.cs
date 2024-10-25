@@ -13,7 +13,7 @@ namespace CreditProposal.Infrastructure.Messaging
         private readonly IModel _channel;
         private readonly ILogger<RabbitMqPublisher> _logger;
         private const string _exchange = "customer-service-exchange";
-        private const string _queueDeadLetter = "credit_proposal_dead_letter_queue";
+        private const string _queueAvaliateCreditProposalDeadLetter = "avaliate_credit_proposal_queue_dead_letter_queue";
 
         public RabbitMqPublisher(IConnection connection, IModel channel, ILogger<RabbitMqPublisher> logger)
         {
@@ -24,8 +24,6 @@ namespace CreditProposal.Infrastructure.Messaging
 
         public void PublishMessage(object data, string routingKey)
         {
-            _logger.LogInformation($"{nameof(RabbitMqPublisher)} - START ==============================================================================================");
-            _logger.LogInformation($"Publish message: {payload}");
             var policy = Policy
                 .Handle<Exception>()
                 .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
@@ -36,6 +34,9 @@ namespace CreditProposal.Infrastructure.Messaging
 
             var payload = JsonConvert.SerializeObject(data);
             var byteArray = Encoding.UTF8.GetBytes(payload);
+
+            _logger.LogInformation($"{nameof(RabbitMqPublisher)} - START ==============================================================================================");
+            _logger.LogInformation($"Publish message: {payload}");
 
             try
             {
@@ -51,7 +52,7 @@ namespace CreditProposal.Infrastructure.Messaging
                 _logger.LogError($"Failed to publish message: {ex.Message}");
 
                 // Enviar para Dead Letter Queue
-                _channel.BasicPublish(_exchange, _queueDeadLetter, null, byteArray);
+                _channel.BasicPublish(_exchange, _queueAvaliateCreditProposalDeadLetter, null, byteArray);
                 _logger.LogInformation($"Message sent to dead-letter queue: {data.GetType().Name}");
             }
             _logger.LogInformation($"{nameof(RabbitMqPublisher)} - END ==============================================================================================");

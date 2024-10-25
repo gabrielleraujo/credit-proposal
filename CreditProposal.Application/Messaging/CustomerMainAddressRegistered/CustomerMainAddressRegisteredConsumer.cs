@@ -41,7 +41,7 @@ namespace CreditProposal.Application.Messaging.CustomerMainAddressRegistered
             // Simular falha no processamento
             // throw new Exception("Falha simulada!");
 
-            var @event = JsonConvert.DeserializeObject<CustomerMainAddressRegisteredEvent>(message); // ESTÁ DANDO ERRO PARA CONVERTER
+            var @event = JsonConvert.DeserializeObject<CustomerMainAddressRegisteredEvent>(message);
 
             // // Lógica para verificar e processar a liberação de crédito
             using var scope = _serviceProvider.CreateScope();
