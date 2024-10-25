@@ -16,16 +16,3 @@ Run and Debug > .NET Core Docker Attach
 ### Abrir banco de dados no Azure Data Studio:
 utilizar a connction string mudando o o server para localhost e especificar a porta configurada no docker-compose.
 Ex: Server=localhost,1434
-
-### Swagger:
-- https://localhost:7014/swagger/index.html
-
-#### Some usage examples:
-
-<p align="justify"><img width="700" src="./assets/images/swagger.png"/></p>
-<p align="justify"><img width="700" src="./assets/images/middleware_error_response.png"/></p>
-<p align="justify"><img width="700" src="./assets/images/post_credit_proposal.png"/></p>
-<p align="justify"><img width="700" src="./assets/images/get_credit_proposal.png"/></p>
-
-
-
