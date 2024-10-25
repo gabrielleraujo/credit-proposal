@@ -1,7 +1,8 @@
 # Credit proposal
 
 ### New Migration:
-- para criar uma migração do banco de dados execute o comando abaixono terminal no caminho "src/CreditProposal.Infrastructure".1. dotnet ef --startup-project ../CreditProposal.API/  migrations add initial -c CreditProposalContext
+- para criar uma migração do banco de dados execute o comando abaixono terminal no caminho "src/CreditProposal.Infrastructure".
+1. dotnet ef --startup-project ../CreditProposal.API/  migrations add initial -c CreditProposalContext
 2. dotnet ef --startup-project ../CreditProposal.API/  database update
 
 ### Docker Compose:

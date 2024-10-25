@@ -49,7 +49,7 @@ namespace CreditProposal.Application.Commands.AvaliateCreditProposalCommand
                 command.Event.Address.Complement
             );
 
-            var customer = await _repository.FindCustomerByAsync(x => x.CustomerId == command.Event.CustomerId);
+            var customer = await _repository.FindCustomerByAsync(x => x.Id == command.Event.CustomerId);
 
             if (customer == null)
             {
